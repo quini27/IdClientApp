@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/09/25 15:05:27.000.430,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2019/09/25 15:05:27.000.135,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2019/09/25 15:05:39.000.096,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2019/10/12 21:44:30.000.768,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2019/10/12 21:47:53.000.075,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2019/10/14 14:11:22.000.985,=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2019/10/14 14:12:44.000.836,C:\fernando\projdelphi\provas rad studio\web test\Indy projects\VCL Indy test\UnitIdClient.pas=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2019/10/14 14:12:44.000.836,C:\fernando\projdelphi\provas rad studio\web test\Indy projects\VCL Indy test\UnitIdClient.dfm=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2019/10/14 14:13:13.000.519,C:\fernando\projdelphi\provas rad studio\web test\Indy projects\VCL Indy test\AppIdClient.dproj=C:\Users\fernando\Documents\Embarcadero\Studio\Projects\Project3.dproj</Transaction>
+    <Transaction>2019/10/28 16:09:53.000.180,=C:\fernando\projdelphi\provas rad studio\web test\Indy projects\VCL Indy test\UnitAdd.pas</Transaction>
+  </Transactions>
+</BorlandProject>
