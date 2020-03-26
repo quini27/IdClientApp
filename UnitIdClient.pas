@@ -22,6 +22,7 @@ type
     MemoLog: TMemo;
     Label1: TLabel;
     setIPbtn: TButton;
+    IdThreadComponent1: TIdThreadComponent;
     procedure connect_btnClick(Sender: TObject);
     procedure IdTCPClient1Connected(Sender: TObject);
     procedure MemoLogChange(Sender: TObject);
@@ -30,7 +31,7 @@ type
     procedure send_btnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure IdThreadComponentRun(Sender: TIdThreadComponent);
+    procedure IdThreadComponent1Run(Sender: TIdThreadComponent);
     procedure setIPbtnClick(Sender: TObject);
   private
     { Private declarations }
@@ -41,8 +42,6 @@ type
 
 var
   FormIdClient: TFormIdClient;
-         // ... TIdThreadComponent
-  idThreadComponent   : TIdThreadComponent;
 
 implementation
 
@@ -56,26 +55,30 @@ uses UnitAdd;
 procedure TFormIdClient.FormCreate(Sender: TObject);
 begin
     // ... create TIdThreadComponent
-    idThreadComponent           := TIdThreadComponent.Create();
+    //idThreadComponent           := TIdThreadComponent.Create();
     // ... callback functions
-    idThreadComponent.OnRun     := IdThreadComponentRun;
+    //idThreadComponent.OnRun     := IdThreadComponentRun;
     Caption:='Indy Client - server IP: '+IdTCPClient1.Host;
 end;
 
 
 //call the form to introduze the IP server address and return the IP
-function EnterIPAddress:string;
+//function EnterIPAddress:string;
+//begin
+//    FormAddress.Visible:=true;
+//    repeat Application.ProcessMessages
+//    until (FormAddress.Visible=false);
+//    EnterIPAddress:=FormAddress.endereco;
+//end;
+
+//set the IP Address and the port number
+procedure TFormIdClient.setIPbtnClick(Sender: TObject);
 begin
     FormAddress.Visible:=true;
     repeat Application.ProcessMessages
     until (FormAddress.Visible=false);
-    EnterIPAddress:=FormAddress.endereco;
-end;
-
-//set the IP Address
-procedure TFormIdClient.setIPbtnClick(Sender: TObject);
-begin
-    IdTCPClient1.Host:=EnterIPAddress;
+    IdTCPClient1.Host:=FormAddress.endereco;
+    IdTCPClient1.Port:=FormAddress.port;
     //connect_btn.Enabled:=true;
     Caption:='Indy Client - server IP: '+IdTCPClient1.Host;
 end;
@@ -144,21 +147,21 @@ begin
      EditMess.Enabled:=true;
      send_btn.Enabled:=true;
      LedShape.Brush.Color:=clRed;
-     Label1.Caption:='Client connected to server nodeMCU '+IdTCPClient1.Host;
+     Label1.Caption:='Client connected to server '+IdTCPClient1.Host;
      MemoLog.Lines.Add('Client connected to server '+IdTCPClient1.Host+' at '+FormatDateTime('hh:nn:ss', Now));
      IdTCPClient1.IOHandler.Writeln('Hello server');
      //IdTCPClient1.IOHandler.Writeln('/LED=OFF');
      //read welcome message
      MemoLog.Lines.Add('Server says: '+IdTCPClient1.IOHandler.ReadLn());
      //MemoLog.Lines.Add('Server also says: '+IdTCPClient1.IOHandler.ReadLn());
-     idThreadComponent.Active:=true;       //active idThreadComponent
+     idThreadComponent1.Active:=true;       //active idThreadComponent
 end;
 
 
 //EVENT executed when IdTCPClient is disconnected
 procedure TFormIdClient.IdTCPClient1Disconnected(Sender: TObject);
 begin
-     idThreadComponent.Active:=false;
+     idThreadComponent1.Active:=false;
      connect_btn.Enabled:=true;
      setIPbtn.Enabled:=true;
      disconnect_btn.Enabled:=false;
@@ -202,16 +205,18 @@ end;
 
 
 
+
 // *****************************************************************************
 //   EVENT : onRun()
 //           OCCURS WHEN THE CLIENT RECEIVES A MESSAGE FROM THE SERVER
 // *****************************************************************************
-procedure TFormIdClient.IdThreadComponentRun(Sender: TIdThreadComponent);
+procedure TFormIdClient.IdThreadComponent1Run(Sender: TIdThreadComponent);
 var  msgFromServ : string;
 begin
-    // ... read message from server
+      // ... read message from server
     msgFromServ := IdTCPClient1.IOHandler.ReadLn();
-    MemoLog.Lines.Add('Message from server: '+msgFromServ)
+    if msgFromServ<>'' then MemoLog.Lines.Add('Message from server: '+msgFromServ)
 end;
+
 
 end.

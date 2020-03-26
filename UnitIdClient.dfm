@@ -178,11 +178,20 @@ object FormIdClient: TFormIdClient
     OnDisconnected = IdTCPClient1Disconnected
     OnConnected = IdTCPClient1Connected
     ConnectTimeout = 5000
-    Host = '192.168.0.200'
+    Host = '192.168.1.60'
     IPVersion = Id_IPv4
-    Port = 100
-    ReadTimeout = 50000
+    Port = 120
+    ReadTimeout = 5000
     Left = 736
     Top = 40
+  end
+  object IdThreadComponent1: TIdThreadComponent
+    Active = False
+    Loop = False
+    Priority = tpNormal
+    StopMode = smTerminate
+    OnRun = IdThreadComponent1Run
+    Left = 800
+    Top = 56
   end
 end
